@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Birthday Invitation 🎂</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #fff0f5;
+        font-family: Arial, sans-serif;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    .container {
+        padding: 30px;
+        width: 90%;
+        max-width: 650px;
+    }
+
+    h1 {
+        font-size: clamp(35px, 7vw, 65px);
+        font-weight: 900;
+        color: #e63975;
+        margin-bottom: 40px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+    }
+
+    button {
+        border: none;
+        padding: 16px 35px;
+        font-size: 22px;
+        font-weight: bold;
+        border-radius: 12px;
+        cursor: pointer;
+    }
+
+    #yes {
+        background: #28c76f;
+        color: white;
+    }
+
+    #no {
+        background: #ff4757;
+        color: white;
+        position: relative;
+    }
+
+    #result {
+        display: none;
+        font-size: 65px;
+        font-weight: 900;
+        color: #e63975;
+        margin-top: 30px;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>WILL YOU COME TO MY BIRTHDAY PARTY?</h1>
+
+    <div class="buttons" id="buttons">
+        <button id="yes" onclick="correct()">YES!</button>
+        <button id="no">NO</button>
+    </div>
+
+    <div id="result">CORRECT! 🎉</div>
+
+</div>
+
+<script>
+const noButton = document.getElementById("no");
+
+function runAway() {
+    const maxX = window.innerWidth - noButton.offsetWidth - 20;
+    const maxY = window.innerHeight - noButton.offsetHeight - 20;
+
+    noButton.style.position = "fixed";
+    noButton.style.left = Math.max(10, Math.random() * maxX) + "px";
+    noButton.style.top = Math.max(10, Math.random() * maxY) + "px";
+}
+
+noButton.addEventListener("mouseenter", runAway);
+noButton.addEventListener("touchstart", function(e) {
+    e.preventDefault();
+    runAway();
+});
+
+noButton.addEventListener("click", runAway);
+
+function correct() {
+    document.getElementById("buttons").style.display = "none";
+    document.getElementById("result").style.display = "block";
+    document.querySelector("h1").innerText = "YOU'RE COMING TO MY PARTY!";
+}
+</script>
+
+</body>
+</html>
